@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   description: 'Transforme seu negócio com o StyleConnect. Sistema completo com agenda digital, gestão financeira, fidelização e presença digital. Pague uma vez, use para sempre.',
   keywords: 'styleconnect, sistema gestão salão beleza, software salão, agendamento online, gestão financeira salão, fidelização clientes, clínicas estética',
   authors: [{ name: 'StyleConnect' }],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: 'StyleConnect - Sistema de Gestão Completo',
     description: 'Solução completa para organizar, modernizar e fazer seu salão ou clínica crescer com ROI de +35%',
