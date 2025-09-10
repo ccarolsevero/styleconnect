@@ -7,8 +7,8 @@ interface UseIntersectionObserverProps {
 }
 
 export const useIntersectionObserver = ({
-  threshold = 0.2,
-  rootMargin = '0px 0px -100px 0px',
+  threshold = 0.15,
+  rootMargin = '0px 0px -50px 0px',
   triggerOnce = true
 }: UseIntersectionObserverProps = {}) => {
   const [isIntersecting, setIsIntersecting] = useState(false)

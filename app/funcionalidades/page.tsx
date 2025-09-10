@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import RevealOnScroll from '../../components/RevealOnScroll'
 import { 
   ArrowLeft, 
   Calendar, 
@@ -21,7 +22,8 @@ import {
   Monitor,
   Smartphone as PhoneIcon,
   Mail,
-  MapPin
+  MapPin,
+  MessageCircle
 } from 'lucide-react'
 
 export default function FuncionalidadesPage() {
@@ -169,7 +171,7 @@ export default function FuncionalidadesPage() {
             </div>
             <Link
               href="/"
-              className="flex items-center gap-2 text-gray-700 hover:text-secondary-500 transition-colors"
+              className="flex items-center gap-2 text-gray-700 hover:text-purple-600 transition-colors"
             >
               <ArrowLeft size={20} />
               Voltar ao site
@@ -181,38 +183,45 @@ export default function FuncionalidadesPage() {
       {/* Hero Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6 animate-fade-in-up">
-            Funcionalidades do{' '}
-            <span className="text-purple-800 animate-pulse-subtle">StyleConnect</span>
-          </h1>
-          <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto animate-fade-in-up delay-200">
-            Descubra todas as funcionalidades que fazem do StyleConnect a solução completa para gestão de salões e clínicas de estética.
-          </p>
+          <RevealOnScroll direction="up" delay={300}>
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6">
+              Funcionalidades do{' '}
+              <span className="text-purple-800">StyleConnect</span>
+            </h1>
+          </RevealOnScroll>
+          <RevealOnScroll direction="up" delay={600}>
+            <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+              Descubra todas as funcionalidades que fazem do StyleConnect a solução completa para gestão de salões e clínicas de estética.
+            </p>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* Tabs Navigation */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
-            {tabs.map((tab) => {
-              const Icon = tab.icon
-              return (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    activeTab === tab.key
-                      ? 'bg-purple-600 text-white shadow-lg hover-glow'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  <Icon size={20} />
-                  {tab.title}
-                </button>
-              )
-            })}
-          </div>
+          <RevealOnScroll direction="up" delay={900}>
+            <div className="flex flex-wrap justify-center gap-4">
+              {tabs.map((tab, index) => {
+                const Icon = tab.icon
+                return (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key)}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 hover-organic ${
+                      activeTab === tab.key
+                        ? 'bg-purple-600 text-white shadow-lg hover-glow'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <Icon size={20} />
+                    {tab.title}
+                  </button>
+                )
+              })}
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -224,16 +233,18 @@ export default function FuncionalidadesPage() {
             
             const Icon = func.icon
             return (
-              <div key={key} className="animate-fade-in-up">
+              <div key={key}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                   {/* Left Side - Content */}
                   <div>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="gradient-accent w-16 h-16 rounded-2xl flex items-center justify-center">
-                        <Icon className="text-white" size={32} />
+                    <RevealOnScroll direction="left" delay={300}>
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="gradient-accent w-16 h-16 rounded-2xl flex items-center justify-center hover-breathe">
+                          <Icon className="text-white" size={32} />
+                        </div>
+                        <h2 className="text-3xl font-bold text-gray-900">{func.title}</h2>
                       </div>
-                      <h2 className="text-3xl font-bold text-gray-900">{func.title}</h2>
-                    </div>
+                    </RevealOnScroll>
                     
                     <p className="text-xl text-gray-700 mb-8 leading-relaxed">
                       {func.description}
@@ -374,6 +385,17 @@ export default function FuncionalidadesPage() {
           </div>
         </div>
       </footer>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/5511997932185?text=Olá! Gostaria de saber mais sobre o StyleConnect."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-pulse"
+        title="Fale conosco no WhatsApp"
+      >
+        <MessageCircle size={28} />
+      </a>
     </div>
   )
 }

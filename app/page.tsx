@@ -35,7 +35,8 @@ import {
   Percent,
   Timer,
   Users2,
-  Monitor
+  Monitor,
+  MessageCircle
 } from 'lucide-react'
 
 export default function Home() {
@@ -46,9 +47,12 @@ export default function Home() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+      const navbarHeight = 64 // Altura do navbar (h-16 = 64px)
+      const elementPosition = element.offsetTop - navbarHeight
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
       })
     }
     setIsMenuOpen(false) // Fecha o menu mobile após clicar
@@ -239,10 +243,10 @@ export default function Home() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <button onClick={() => scrollToSection('solution')} className="text-gray-700 hover:text-secondary-500 transition-colors">Solução</button>
-              <button onClick={() => scrollToSection('pillars')} className="text-gray-700 hover:text-secondary-500 transition-colors">Pilares</button>
-              <button onClick={() => scrollToSection('included')} className="text-gray-700 hover:text-secondary-500 transition-colors">Funcionalidades</button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-secondary-500 transition-colors">Contato</button>
+              <button onClick={() => scrollToSection('solution')} className="text-gray-700 hover:text-purple-600 transition-colors">Solução</button>
+              <button onClick={() => scrollToSection('pillars')} className="text-gray-700 hover:text-purple-600 transition-colors">Pilares</button>
+              <a href="/funcionalidades" className="text-gray-700 hover:text-purple-600 transition-colors">Funcionalidades</a>
+              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-purple-600 transition-colors">Contato</button>
             </nav>
 
             <div className="hidden md:flex items-center space-x-4">
@@ -269,10 +273,10 @@ export default function Home() {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-200">
               <nav className="flex flex-col space-y-4">
-                <button onClick={() => scrollToSection('solution')} className="text-gray-700 hover:text-secondary-500 transition-colors text-left">Solução</button>
-                <button onClick={() => scrollToSection('pillars')} className="text-gray-700 hover:text-secondary-500 transition-colors text-left">Pilares</button>
-                <button onClick={() => scrollToSection('included')} className="text-gray-700 hover:text-secondary-500 transition-colors text-left">Funcionalidades</button>
-                <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-secondary-500 transition-colors text-left">Contato</button>
+                <button onClick={() => scrollToSection('solution')} className="text-gray-700 hover:text-purple-600 transition-colors text-left">Solução</button>
+                <button onClick={() => scrollToSection('pillars')} className="text-gray-700 hover:text-purple-600 transition-colors text-left">Pilares</button>
+                <a href="/funcionalidades" className="text-gray-700 hover:text-purple-600 transition-colors text-left">Funcionalidades</a>
+                <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-purple-600 transition-colors text-left">Contato</button>
                 <a 
                   href="https://wa.me/5511997932185?text=Olá! Gostaria de saber mais sobre o StyleConnect e como adquirir o sistema."
                   target="_blank"
@@ -291,30 +295,30 @@ export default function Home() {
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <RevealOnScroll direction="up">
+            <RevealOnScroll direction="up" delay={300}>
               <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6">
                 Sistema de Gestão Completo para{' '}
-                <span className="text-purple-800 animate-pulse-subtle">Salões de Beleza</span>
+                <span className="text-purple-800">Salões de Beleza</span>
               </h1>
             </RevealOnScroll>
-            <RevealOnScroll direction="up" delay={200}>
+            <RevealOnScroll direction="up" delay={600}>
               <p className="text-xl md:text-2xl text-slate-800 mb-6 max-w-4xl mx-auto">
                 Solução tecnológica completa e moderna desenvolvida especificamente para salões de beleza e clínicas de estética.
               </p>
             </RevealOnScroll>
-            <RevealOnScroll direction="up" delay={400}>
+            <RevealOnScroll direction="up" delay={900}>
               <p className="text-lg md:text-xl text-slate-700 mb-8 max-w-5xl mx-auto leading-relaxed">
                 Uma plataforma que integra todas as funcionalidades essenciais para uma gestão eficiente e acessível de negócios do setor de beleza, oferecendo uma experiência digital completa tanto para proprietários e clientes.
               </p>
             </RevealOnScroll>
-            <RevealOnScroll direction="scale" delay={600}>
-              <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 mb-8 max-w-2xl mx-auto border border-blue-200 hover-lift">
+            <RevealOnScroll direction="scale" delay={1200}>
+              <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 mb-8 max-w-2xl mx-auto border border-blue-200 hover-organic">
                 <p className="text-lg font-semibold text-blue-800">
                   Transforme seu salão com tecnologia de ponta
                 </p>
               </div>
             </RevealOnScroll>
-            <RevealOnScroll direction="up" delay={800}>
+            <RevealOnScroll direction="up" delay={1500}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button 
                   onClick={() => scrollToSection('contact')}
@@ -323,12 +327,12 @@ export default function Home() {
                   Agendar Demonstração Gratuita
                   <ArrowRight size={20} />
                 </button>
-                <button 
-                  onClick={() => scrollToSection('included')}
-                  className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full text-lg font-semibold hover:border-purple-500 hover:text-purple-500 transition-all duration-300 hover-glow"
+                <a 
+                  href="/funcionalidades"
+                  className="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-full text-lg font-semibold hover:border-purple-500 hover:text-purple-500 transition-all duration-300 hover-glow inline-block"
                 >
                   Ver Funcionalidades
-                </button>
+                </a>
               </div>
             </RevealOnScroll>
           </div>
@@ -353,9 +357,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {challenges.map((challenge, index) => (
-              <RevealOnScroll key={index} direction="up" delay={index * 200}>
-                <div className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-slate-400 hover-lift">
-                  <div className="bg-slate-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 hover-scale">
+              <RevealOnScroll key={index} direction="up" delay={index * 100}>
+                <div className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-slate-400 hover-organic">
+                  <div className="bg-slate-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 hover-breathe">
                     <challenge.icon className="text-slate-600" size={32} />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{challenge.title}</h3>
@@ -385,9 +389,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {solutions.map((solution, index) => (
-              <RevealOnScroll key={index} direction="up" delay={index * 200}>
-                <div className="bg-gradient-to-br from-white to-accent-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-accent-500 hover-lift">
-                  <div className="gradient-accent w-16 h-16 rounded-2xl flex items-center justify-center mb-6 hover-scale animate-float">
+              <RevealOnScroll key={index} direction="up" delay={index * 100}>
+                <div className="bg-gradient-to-br from-white to-accent-50 p-8 rounded-2xl shadow-lg border-l-4 border-accent-500 hover-organic">
+                  <div className="gradient-accent w-16 h-16 rounded-2xl flex items-center justify-center mb-6 hover-breathe">
                     <solution.icon className="text-white" size={32} />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{solution.title}</h3>
@@ -417,9 +421,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {fourPillars.map((pillar, index) => (
-              <RevealOnScroll key={index} direction="up" delay={index * 200}>
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center hover-lift">
-                  <div className="gradient-accent w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto hover-scale animate-float">
+              <RevealOnScroll key={index} direction="up" delay={index * 100}>
+                <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover-organic">
+                  <div className="gradient-accent w-20 h-20 rounded-full flex items-center justify-center mb-6 mx-auto hover-breathe">
                     <pillar.icon className="text-white" size={40} />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{pillar.title}</h3>
@@ -449,9 +453,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {includedFeatures.map((feature, index) => (
-              <RevealOnScroll key={index} direction="left" delay={index * 100}>
-                <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-gray-50 to-white rounded-xl hover:shadow-md transition-all duration-300 hover-lift">
-                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover-scale">
+              <RevealOnScroll key={index} direction="left" delay={index * 50}>
+                <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-gray-50 to-white rounded-xl hover-organic">
+                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 hover-breathe">
                     <feature.icon className="text-white" size={24} />
                   </div>
                   <span className="text-gray-700 font-medium">{feature.text}</span>
@@ -480,10 +484,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {competitiveAdvantages.map((advantage, index) => (
-              <RevealOnScroll key={index} direction="up" delay={index * 300}>
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover-lift">
+              <RevealOnScroll key={index} direction="up" delay={index * 150}>
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover-organic">
                   <div className="text-center mb-6">
-                    <div className="gradient-accent w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 hover-scale animate-float">
+                    <div className="gradient-accent w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 hover-breathe">
                       <advantage.icon className="text-white" size={32} />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-900">{advantage.category}</h3>
@@ -521,9 +525,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {roiBenefits.map((benefit, index) => (
-              <RevealOnScroll key={index} direction="scale" delay={index * 200}>
-                <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-lift">
-                  <div className="gradient-gold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 hover-scale animate-float">
+              <RevealOnScroll key={index} direction="scale" delay={index * 100}>
+                <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover-organic">
+                  <div className="gradient-gold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 hover-breathe">
                     <benefit.icon className="text-white" size={32} />
                   </div>
                   <div className="text-4xl font-bold gradient-text-elegant mb-2">{benefit.value}</div>
@@ -533,7 +537,7 @@ export default function Home() {
             ))}
           </div>
 
-          <RevealOnScroll direction="up" delay={800}>
+          <RevealOnScroll direction="up" delay={500}>
             <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center">
               <div className="bg-gradient-to-r from-purple-100 to-accent-100 rounded-2xl p-6 mb-8 border border-purple-200 hover-lift">
                 <h4 className="text-lg font-semibold text-slate-800 mb-4">Transforme seu salão agora mesmo!</h4>
@@ -580,10 +584,10 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <RevealOnScroll direction="left">
+            <RevealOnScroll direction="left" delay={100}>
               <div className="space-y-6">
-                <div className="flex items-center gap-4 hover-lift">
-                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center hover-scale">
+                <div className="flex items-center gap-4 hover-organic">
+                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center hover-breathe">
                     <Phone className="text-white" size={24} />
                   </div>
                   <div>
@@ -592,8 +596,8 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-4 hover-lift">
-                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center hover-scale">
+                <div className="flex items-center gap-4 hover-organic">
+                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center hover-breathe">
                     <Mail className="text-white" size={24} />
                   </div>
                   <div>
@@ -602,8 +606,8 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-4 hover-lift">
-                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center hover-scale">
+                <div className="flex items-center gap-4 hover-organic">
+                  <div className="gradient-accent w-12 h-12 rounded-full flex items-center justify-center hover-breathe">
                     <MapPin className="text-white" size={24} />
                   </div>
                   <div>
@@ -614,7 +618,7 @@ export default function Home() {
               </div>
             </RevealOnScroll>
 
-            <RevealOnScroll direction="right">
+            <RevealOnScroll direction="right" delay={200}>
               <div className="bg-white p-8 rounded-2xl shadow-lg">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -720,6 +724,17 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/5511997932185?text=Olá! Gostaria de saber mais sobre o StyleConnect."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 animate-pulse"
+        title="Fale conosco no WhatsApp"
+      >
+        <MessageCircle size={28} />
+      </a>
     </div>
   )
 }

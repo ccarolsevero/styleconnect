@@ -8,17 +8,21 @@ interface RevealOnScrollProps {
   direction?: 'up' | 'left' | 'right' | 'scale'
   delay?: number
   className?: string
+  randomDelay?: boolean
+  organic?: boolean
 }
 
 export default function RevealOnScroll({ 
   children, 
   direction = 'up', 
   delay = 0,
-  className = '' 
+  className = '',
+  randomDelay = false,
+  organic = true
 }: RevealOnScrollProps) {
   const { ref, isIntersecting } = useIntersectionObserver({
-    threshold: 0.2,
-    rootMargin: '0px 0px -80px 0px',
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px',
     triggerOnce: true
   })
 
@@ -36,11 +40,18 @@ export default function RevealOnScroll({
     return `${baseClasses} ${isIntersecting ? visibleClass : hiddenClass}`
   }
 
+  const getDelay = () => {
+    return delay
+  }
+
   return (
     <div 
       ref={ref} 
       className={getRevealClasses()}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ 
+        transitionDelay: `${getDelay()}ms`,
+        willChange: organic ? 'transform, opacity, filter' : 'auto'
+      }}
     >
       {children}
     </div>
