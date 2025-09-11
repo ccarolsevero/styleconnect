@@ -73,11 +73,6 @@ export default function Cases() {
     }
   ]
 
-  const stats = [
-    { number: "98%", label: "Satisfação dos Clientes" },
-    { number: "R$ 2M+", label: "Faturamento Gerado" },
-    { number: "24/7", label: "Suporte Disponível" }
-  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -109,25 +104,10 @@ export default function Cases() {
           </RevealOnScroll>
           <RevealOnScroll direction="up" delay={600}>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
-              Conheça histórias reais de salões que transformaram seus negócios com o StyleConnect - totalmente sem mensalidade
+              Conheça histórias reais de salões que transformaram seus negócios com o StyleConnect
             </p>
           </RevealOnScroll>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            {stats.map((stat, index) => (
-              <RevealOnScroll key={index} direction="up" delay={900 + (index * 200)}>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600">
-                    {stat.label}
-                  </div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
         </div>
       </section>
 

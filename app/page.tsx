@@ -202,10 +202,11 @@ export default function Home() {
       category: 'Funcionalidades Únicas',
       icon: Star,
       features: [
+        'Sistema totalmente sem mensalidade - apenas um pagamento único',
         'Sistema de Prontuários digitais completos',
         'Gestão de Pacotes personalizados',
         'Sistema de Comissões flexível e transparente',
-        'Integração com Pagamentos (Sicoob e outros)',
+        'Integração completa com seu banco para pagamentos (Sicoob e outros)',
         'Sistema de Recomendações para clientes',
         'Controle de estoque de produtos'
       ]
