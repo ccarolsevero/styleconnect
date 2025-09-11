@@ -244,7 +244,7 @@ export default function Home() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
               <button onClick={() => scrollToSection('solution')} className="text-gray-700 hover:text-purple-600 transition-colors">Solução</button>
-              <button onClick={() => scrollToSection('pillars')} className="text-gray-700 hover:text-purple-600 transition-colors">Pilares</button>
+              <a href="/cases" className="text-gray-700 hover:text-purple-600 transition-colors">Cases</a>
               <a href="/funcionalidades" className="text-gray-700 hover:text-purple-600 transition-colors">Funcionalidades</a>
               <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-purple-600 transition-colors">Contato</button>
             </nav>
@@ -274,7 +274,7 @@ export default function Home() {
             <div className="md:hidden py-4 border-t border-gray-200">
               <nav className="flex flex-col space-y-4">
                 <button onClick={() => scrollToSection('solution')} className="text-gray-700 hover:text-purple-600 transition-colors text-left">Solução</button>
-                <button onClick={() => scrollToSection('pillars')} className="text-gray-700 hover:text-purple-600 transition-colors text-left">Pilares</button>
+                <a href="/cases" className="text-gray-700 hover:text-purple-600 transition-colors text-left">Cases</a>
                 <a href="/funcionalidades" className="text-gray-700 hover:text-purple-600 transition-colors text-left">Funcionalidades</a>
                 <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-purple-600 transition-colors text-left">Contato</button>
                 <a 
@@ -314,7 +314,7 @@ export default function Home() {
             <RevealOnScroll direction="scale" delay={1200}>
               <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 mb-8 max-w-2xl mx-auto border border-blue-200 hover-organic">
                 <p className="text-lg font-semibold text-blue-800">
-                  Transforme seu salão com tecnologia de ponta
+                  Sistema completo para seu salão - sem mensalidade
                 </p>
               </div>
             </RevealOnScroll>
@@ -472,7 +472,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <RevealOnScroll direction="up">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Diferenciais Competitivos
+                Diferenciais
               </h2>
             </RevealOnScroll>
             <RevealOnScroll direction="up" delay={200}>
@@ -704,7 +704,7 @@ export default function Home() {
               <h3 className="text-lg font-semibold mb-4">Produto</h3>
               <ul className="space-y-2 text-slate-300">
                 <li><a href="#solution" className="hover:text-white transition-colors">Solução</a></li>
-                <li><a href="#pillars" className="hover:text-white transition-colors">Pilares</a></li>
+                <li><a href="/cases" className="hover:text-white transition-colors">Cases</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contato</a></li>
               </ul>
             </div>
